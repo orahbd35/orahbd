@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="OrahBD — premium digital products, templates, guides and AI resources.">
+<title>OrahBD — Premium Digital Store</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<style>
+html{scroll-behavior:smooth}body{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(18px);border:1px solid rgba(148,163,184,.18)}
+.dark .glass{background:rgba(15,23,42,.78)}
+.card{transition:transform .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-6px);box-shadow:0 25px 70px rgba(15,23,42,.12)}
+.gradient{background:linear-gradient(100deg,#7c3aed,#2563eb,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+
+<header class="sticky top-0 z-50 glass">
+<nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+<a href="#" class="text-2xl font-black">Orah<span class="gradient">BD</span></a>
+<div class="hidden md:flex gap-7 text-sm font-bold text-slate-600 dark:text-slate-300">
+<a href="#categories">Categories</a><a href="#products">Products</a><a href="#why">Why OrahBD</a><a href="#faq">FAQ</a>
+</div>
+<div class="flex gap-2 items-center"><button id="theme" class="rounded-xl border px-3 py-2">◐</button><a href="#products" class="rounded-xl bg-slate-950 dark:bg-white dark:text-slate-950 text-white px-4 py-2.5 text-sm font-bold">Shop Now</a></div>
+</nav></header>
+
+<section class="relative overflow-hidden">
+<div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-indigo-400/20 blur-3xl"></div>
+<div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-cyan-400/15 blur-3xl"></div>
+<div class="max-w-7xl mx-auto px-5 pt-24 pb-20 md:pt-32 md:pb-28 grid lg:grid-cols-2 gap-14 items-center">
+<div>
+<div class="inline-flex rounded-full border bg-white/70 dark:bg-slate-900/70 px-4 py-2 text-xs font-black tracking-widest">✦ PREMIUM DIGITAL RESOURCES</div>
+<h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[.94] mt-6">Work smarter.<br><span class="gradient">Look professional.</span></h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mt-7 max-w-xl">Premium templates, guides, AI prompts, spreadsheets and website resources — ready for your next project.</p>
+<div class="flex flex-wrap gap-3 mt-8"><a href="#products" class="rounded-2xl bg-indigo-600 text-white px-6 py-3.5 font-bold">Explore Products →</a><a href="#categories" class="rounded-2xl border px-6 py-3.5 font-bold">Browse Categories</a></div>
+<div class="flex flex-wrap gap-6 mt-8 text-sm text-slate-500"><span>⚡ Instant digital access</span><span>🔒 Secure checkout ready</span><span>📥 Download-ready files</span></div>
+</div>
+<div class="glass rounded-[2rem] p-5 shadow-2xl"><div class="rounded-[1.5rem] bg-slate-950 text-white p-6">
+<div class="flex justify-between"><b class="text-lg">OrahBD Collection</b><span class="text-xs text-slate-400">Digital only</span></div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">📄</span><b class="block mt-4">Career</b><small class="text-slate-400">CV & applications</small></div>
+<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">📊</span><b class="block mt-4">Business</b><small class="text-slate-400">Excel & documents</small></div>
+<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">🤖</span><b class="block mt-4">AI Tools</b><small class="text-slate-400">Prompt packs</small></div>
+<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">🌐</span><b class="block mt-4">Web</b><small class="text-slate-400">HTML templates</small></div>
+</div></div></div>
+</div></section>
+
+<section id="categories" class="max-w-7xl mx-auto px-5 py-20">
+<p class="text-indigo-600 font-black text-sm">EXPLORE</p><h2 class="text-4xl font-black mt-2">Shop by category</h2>
+<div id="categoriesGrid" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-9"></div>
+</section>
+
+<section id="products" class="bg-white dark:bg-slate-900/40 border-y">
+<div class="max-w-7xl mx-auto px-5 py-20">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+<div><p class="text-indigo-600 font-black text-sm">CURATED FOR YOU</p><h2 class="text-4xl font-black mt-2">Featured products</h2></div>
+<div class="flex gap-2"><input id="search" class="w-full md:w-64 rounded-xl border bg-transparent px-4 py-3" placeholder="Search products…"><select id="filter" class="rounded-xl border bg-transparent px-4 py-3"><option>All</option></select></div>
+</div>
+<div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-9"></div>
+</div></section>
+
+<section id="why" class="max-w-7xl mx-auto px-5 py-20">
+<div class="text-center max-w-2xl mx-auto"><p class="text-indigo-600 font-black text-sm">WHY ORAHBD</p><h2 class="text-4xl font-black mt-2">Simple, useful, premium</h2><p class="text-slate-500 mt-4">A clean digital-first experience designed around useful products and easy access.</p></div>
+<div class="grid md:grid-cols-3 gap-5 mt-10">
+<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">⚡</span><h3 class="font-black text-xl mt-5">Instant access</h3><p class="text-slate-500 mt-2">Prepared for fast digital delivery after verified payment.</p></div>
+<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">✨</span><h3 class="font-black text-xl mt-5">Professional quality</h3><p class="text-slate-500 mt-2">Clean layouts and practical files built to look polished.</p></div>
+<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">🔐</span><h3 class="font-black text-xl mt-5">Secure-ready</h3><p class="text-slate-500 mt-2">Ready for real payment and secure download integration.</p></div>
+</div></section>
+
+<section class="max-w-7xl mx-auto px-5 pb-20"><div class="rounded-[2rem] bg-gradient-to-br from-indigo-600 to-cyan-500 text-white p-9 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+<div><p class="font-black text-sm text-white/80">READY TO GET STARTED?</p><h2 class="text-3xl md:text-4xl font-black mt-2">Choose a resource and get to work.</h2><p class="text-white/80 mt-3">Add your real products, prices and previews when ready.</p></div>
+<a href="#products" class="rounded-2xl bg-white text-slate-950 px-6 py-3.5 font-bold">Browse Products</a></div></section>
+
+<section id="faq" class="max-w-4xl mx-auto px-5 py-16"><h2 class="text-4xl font-black text-center">Frequently asked questions</h2>
+<div class="space-y-3 mt-8">
+<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">What does OrahBD sell?</summary><p class="text-slate-500 mt-3">Digital templates, guides, AI prompt packs, spreadsheets and website resources.</p></details>
+<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">How will customers receive files?</summary><p class="text-slate-500 mt-3">The final store can connect verified payment to secure digital download delivery.</p></details>
+<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">Can I add more products later?</summary><p class="text-slate-500 mt-3">Yes. The catalogue structure is designed to grow.</p></details>
+</div></section>
+
+<footer class="bg-slate-950 text-white"><div class="max-w-7xl mx-auto px-5 py-14 grid md:grid-cols-3 gap-10">
+<div><b class="text-2xl">Orah<span class="text-cyan-400">BD</span></b><p class="text-slate-400 mt-4">Premium digital resources for careers, business, creativity and productivity.</p></div>
+<div><b>Store</b><div class="text-slate-400 mt-4 space-y-2 text-sm"><a class="block" href="#categories">Categories</a><a class="block" href="#products">Products</a><a class="block" href="#faq">FAQ</a></div></div>
+<div><b>Support</b><p class="text-slate-400 mt-4 text-sm">Replace this with your support email, refund policy and terms before launch.</p></div>
+</div><div class="border-t border-white/10 text-slate-500 text-sm max-w-7xl mx-auto px-5 py-5">© 2026 OrahBD. All rights reserved.</div></footer>
+
+<script>
+const categories=[['📄','CV & Resume'],['📝','Application Letter'],['📑','Cover Letter'],['📊','Excel Templates'],['📚','PDF Guides'],['🎨','Canva Templates'],['🤖','AI Prompt Packs'],['💼','Business Templates'],['📋','Invoice & Quotation'],['🌐','Website Templates']];
+const products=[
+['Modern ATS Resume','CV & Resume','Professional editable resume template','DOCX + PDF','$4.99','📄'],
+['Professional CV Bundle','CV & Resume','Clean CV collection for job seekers','DOCX + PDF','$7.99','📄'],
+['Job Application Pack','Application Letter','Bangla & English application samples','DOCX + PDF','$3.99','📝'],
+['Cover Letter Kit','Cover Letter','Ready-to-customize professional cover letters','DOCX + PDF','$4.99','📑'],
+['Monthly Budget Tracker','Excel Templates','Budget and expense tracker','XLSX','$3.99','📊'],
+['Business Accounting Sheet','Excel Templates','Income and expense workbook','XLSX','$6.99','📊'],
+['Freelancing Starter Guide','PDF Guides','Beginner guide to freelancing','PDF','$5.99','📚'],
+['ChatGPT Prompt Pack','AI Prompt Packs','Practical prompts for productivity and business','PDF / TXT','$4.99','🤖'],
+['Business Proposal Kit','Business Templates','Professional client proposal templates','DOCX + PDF','$6.99','💼'],
+['Invoice & Quotation Pack','Invoice & Quotation','Editable business documents','DOCX + XLSX','$4.99','📋'],
+['Social Media Starter Kit','Canva Templates','Editable social media design pack','Canva Link','$5.99','🎨'],
+['Portfolio Landing Page','Website Templates','Responsive HTML/CSS starter','ZIP','$9.99','🌐']];
+const cg=document.getElementById('categoriesGrid'),pg=document.getElementById('productGrid'),filter=document.getElementById('filter');
+cg.innerHTML=categories.map(c=>`<button onclick="choose('${c[1]}')" class="card text-left rounded-2xl border bg-white dark:bg-slate-900 p-5"><span class="text-3xl">${c[0]}</span><b class="block mt-4">${c[1]}</b><small class="text-slate-500">Explore →</small></button>`).join('');
+categories.forEach(c=>filter.add(new Option(c[1],c[1])));
+function render(){let q=document.getElementById('search').value.toLowerCase(),f=filter.value;let a=products.filter(p=>(f==='All'||p[1]===f)&&p.slice(0,3).join(' ').toLowerCase().includes(q));pg.innerHTML=a.map(p=>`<article class="card rounded-3xl overflow-hidden border bg-slate-50 dark:bg-slate-950"><div class="h-40 bg-gradient-to-br from-indigo-100 to-cyan-50 dark:from-indigo-950 dark:to-slate-900 flex items-center justify-center text-6xl">${p[5]}</div><div class="p-5"><small class="font-black text-indigo-600">${p[1]}</small><h3 class="font-black text-lg mt-2">${p[0]}</h3><p class="text-sm text-slate-500 mt-2 min-h-10">${p[2]}</p><div class="flex justify-between items-center mt-5"><b>${p[4]}</b><small class="text-slate-500">${p[3]}</small></div><button onclick="alert('Product detail page is ready for your real product data.')" class="w-full mt-4 rounded-xl bg-indigo-600 text-white py-3 font-bold">View Product</button></div></article>`).join('')}
+function choose(c){filter.value=c;document.getElementById('products').scrollIntoView({behavior:'smooth'});render()}
+document.getElementById('search').oninput=render;filter.onchange=render;document.getElementById('theme').onclick=()=>document.documentElement.classList.toggle('dark');render();
+</script>
+</body></html>
