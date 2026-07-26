@@ -1,111 +1,347 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="OrahBD — premium digital products, templates, guides and AI resources.">
-<title>OrahBD — Premium Digital Store</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORAH.BD — কিউরেটেড শপিং</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F1E1B'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23E2703A' font-family='Georgia,serif'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hind+Siliguri:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-html{scroll-behavior:smooth}body{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
-.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(18px);border:1px solid rgba(148,163,184,.18)}
-.dark .glass{background:rgba(15,23,42,.78)}
-.card{transition:transform .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-6px);box-shadow:0 25px 70px rgba(15,23,42,.12)}
-.gradient{background:linear-gradient(100deg,#7c3aed,#2563eb,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+  :root{
+    --bg: #0F1E1B;
+    --surface: #16302B;
+    --surface-2: #1D3A34;
+    --cream: #F4EFE4;
+    --muted: #9BB0AA;
+    --coral: #E2703A;
+    --coral-dark: #B5541F;
+    --line: rgba(244,239,228,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+  }
+  .price{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,30,27,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px; margin:0 auto; padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-size:22px; font-weight:600; letter-spacing:0.3px; }
+  .logo span{ color:var(--coral); }
+  .cat-nav{ display:flex; gap:22px; font-size:15px; color:var(--muted); }
+  .cat-nav a:hover{ color:var(--cream); }
+
+  /* Hero */
+  .hero{
+    max-width:1100px; margin:0 auto; padding:80px 24px 60px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  .hero-eyebrow{ color:var(--coral); font-size:14px; letter-spacing:1px; margin-bottom:14px; }
+  .hero h1{ font-size:44px; line-height:1.15; margin-bottom:20px; }
+  .hero p{ color:var(--muted); font-size:17px; max-width:480px; margin-bottom:28px; }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--coral); color:#241206; font-weight:600;
+    padding:14px 26px; border-radius:6px; font-size:15px;
+    transition:background 0.2s ease;
+  }
+  .hero-cta:hover{ background:#EE8352; }
+  .hero-art{
+    aspect-ratio:1; border-radius:16px;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .hero-art::before{
+    content:'';
+    position:absolute; width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(226,112,58,0.35), transparent 70%);
+  }
+  .hero-art-tag{
+    position:relative; font-family:'Fraunces', serif; font-size:20px; color:var(--muted);
+    border:1px solid var(--line); padding:10px 18px; border-radius:999px;
+    background:rgba(15,30,27,0.6);
+  }
+
+  /* Trust strip */
+  .trust-strip{
+    max-width:1100px; margin:0 auto; padding:0 24px 40px;
+    display:flex; gap:28px; flex-wrap:wrap;
+  }
+  .trust-item{
+    font-size:14px; color:var(--muted); display:flex; align-items:center; gap:8px;
+  }
+  .trust-icon{
+    width:22px; height:22px; border-radius:50%; background:var(--surface-2);
+    border:1px solid var(--line); color:var(--coral); font-size:12px; font-weight:600;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+
+  /* Category chips */
+  .chip-row{
+    max-width:1100px; margin:0 auto; padding:0 24px 30px;
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .chip{
+    font-size:14px; padding:9px 18px; border-radius:999px;
+    border:1px solid var(--line); color:var(--muted);
+    background:var(--surface); cursor:pointer; transition:all 0.15s ease;
+  }
+  .chip.active, .chip:hover{ border-color:var(--coral); color:var(--cream); background:var(--surface-2); }
+
+  /* Product grid */
+  .section-title{
+    max-width:1100px; margin:0 auto; padding:10px 24px 20px;
+    display:flex; align-items:baseline; justify-content:space-between;
+  }
+  .section-title h2{ font-size:26px; }
+  .section-title span{ color:var(--muted); font-size:14px; }
+
+  .grid{
+    max-width:1100px; margin:0 auto; padding:0 24px 80px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px;
+  }
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:rgba(226,112,58,0.5); }
+  .card-img{
+    aspect-ratio:1; background:var(--surface-2);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:13px; overflow:hidden;
+  }
+  .card-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .card-body{ padding:16px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .card-tag{ font-size:11px; color:var(--coral); letter-spacing:0.5px; }
+  .card-name{ font-size:15px; font-weight:500; line-height:1.4; min-height:42px; }
+  .card-price{ font-size:17px; color:var(--cream); }
+  .card-price .old{ color:var(--muted); text-decoration:line-through; font-size:13px; margin-left:8px; }
+  .buy-btn{
+    margin-top:auto; text-align:center; padding:11px; border-radius:6px;
+    background:transparent; border:1px solid var(--coral); color:var(--coral);
+    font-size:14px; font-weight:500; cursor:pointer; transition:all 0.2s ease;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .buy-btn:hover{ background:var(--coral); color:#241206; }
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--line); padding:40px 24px; margin-top:20px;
+  }
+  .footer-wrap{
+    max-width:1100px; margin:0 auto; display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:16px; color:var(--muted); font-size:13px;
+  }
+
+  @media (max-width:720px){
+    .hero{ grid-template-columns:1fr; padding-top:50px; }
+    .hero h1{ font-size:32px; }
+    .hero-art{ order:-1; max-width:280px; margin:0 auto; }
+    .cat-nav{ display:none; }
+    .trust-strip{ gap:16px; justify-content:center; text-align:center; }
+  }
 </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+<body>
 
-<header class="sticky top-0 z-50 glass">
-<nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-<a href="#" class="text-2xl font-black">Orah<span class="gradient">BD</span></a>
-<div class="hidden md:flex gap-7 text-sm font-bold text-slate-600 dark:text-slate-300">
-<a href="#categories">Categories</a><a href="#products">Products</a><a href="#why">Why OrahBD</a><a href="#faq">FAQ</a>
-</div>
-<div class="flex gap-2 items-center"><button id="theme" class="rounded-xl border px-3 py-2">◐</button><a href="#products" class="rounded-xl bg-slate-950 dark:bg-white dark:text-slate-950 text-white px-4 py-2.5 text-sm font-bold">Shop Now</a></div>
-</nav></header>
+<header>
+  <div class="nav-wrap">
+    <div class="logo">ORAH<span>.BD</span></div>
+    <nav class="cat-nav">
+      <a href="#">ইলেকট্রনিক্স</a>
+      <a href="#">ফ্যাশন</a>
+      <a href="#">হোম</a>
+      <a href="#">বিউটি</a>
+    </nav>
+  </div>
+</header>
 
-<section class="relative overflow-hidden">
-<div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-indigo-400/20 blur-3xl"></div>
-<div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-cyan-400/15 blur-3xl"></div>
-<div class="max-w-7xl mx-auto px-5 pt-24 pb-20 md:pt-32 md:pb-28 grid lg:grid-cols-2 gap-14 items-center">
-<div>
-<div class="inline-flex rounded-full border bg-white/70 dark:bg-slate-900/70 px-4 py-2 text-xs font-black tracking-widest">✦ PREMIUM DIGITAL RESOURCES</div>
-<h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[.94] mt-6">Work smarter.<br><span class="gradient">Look professional.</span></h1>
-<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mt-7 max-w-xl">Premium templates, guides, AI prompts, spreadsheets and website resources — ready for your next project.</p>
-<div class="flex flex-wrap gap-3 mt-8"><a href="#products" class="rounded-2xl bg-indigo-600 text-white px-6 py-3.5 font-bold">Explore Products →</a><a href="#categories" class="rounded-2xl border px-6 py-3.5 font-bold">Browse Categories</a></div>
-<div class="flex flex-wrap gap-6 mt-8 text-sm text-slate-500"><span>⚡ Instant digital access</span><span>🔒 Secure checkout ready</span><span>📥 Download-ready files</span></div>
-</div>
-<div class="glass rounded-[2rem] p-5 shadow-2xl"><div class="rounded-[1.5rem] bg-slate-950 text-white p-6">
-<div class="flex justify-between"><b class="text-lg">OrahBD Collection</b><span class="text-xs text-slate-400">Digital only</span></div>
-<div class="grid grid-cols-2 gap-4 mt-6">
-<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">📄</span><b class="block mt-4">Career</b><small class="text-slate-400">CV & applications</small></div>
-<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">📊</span><b class="block mt-4">Business</b><small class="text-slate-400">Excel & documents</small></div>
-<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">🤖</span><b class="block mt-4">AI Tools</b><small class="text-slate-400">Prompt packs</small></div>
-<div class="rounded-2xl bg-white/10 p-5"><span class="text-3xl">🌐</span><b class="block mt-4">Web</b><small class="text-slate-400">HTML templates</small></div>
-</div></div></div>
-</div></section>
-
-<section id="categories" class="max-w-7xl mx-auto px-5 py-20">
-<p class="text-indigo-600 font-black text-sm">EXPLORE</p><h2 class="text-4xl font-black mt-2">Shop by category</h2>
-<div id="categoriesGrid" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-9"></div>
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">ORAH.BD — প্রতিদিনের সেরা বাছাই</div>
+    <h1>যা কিনবেন, যাচাই করেই কিনুন</h1>
+    <p>দাম, রিভিউ ও মান যাচাই করে বাছাই করা প্রোডাক্ট — এক ক্লিকে সরাসরি অর্ডার করুন বিশ্বস্ত মার্কেটপ্লেস থেকে।</p>
+    <a href="#products" class="hero-cta">প্রোডাক্ট দেখুন →</a>
+  </div>
+  <div class="hero-art">
+    <div class="hero-art-tag">আজকের বাছাই</div>
+  </div>
 </section>
 
-<section id="products" class="bg-white dark:bg-slate-900/40 border-y">
-<div class="max-w-7xl mx-auto px-5 py-20">
-<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
-<div><p class="text-indigo-600 font-black text-sm">CURATED FOR YOU</p><h2 class="text-4xl font-black mt-2">Featured products</h2></div>
-<div class="flex gap-2"><input id="search" class="w-full md:w-64 rounded-xl border bg-transparent px-4 py-3" placeholder="Search products…"><select id="filter" class="rounded-xl border bg-transparent px-4 py-3"><option>All</option></select></div>
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-icon">✓</span> যাচাইকৃত প্রোডাক্ট</div>
+  <div class="trust-item"><span class="trust-icon">৳</span> ক্যাশ অন ডেলিভারি সুবিধা</div>
+  <div class="trust-item"><span class="trust-icon">↻</span> নিরাপদ কেনাকাটা</div>
 </div>
-<div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-9"></div>
-</div></section>
 
-<section id="why" class="max-w-7xl mx-auto px-5 py-20">
-<div class="text-center max-w-2xl mx-auto"><p class="text-indigo-600 font-black text-sm">WHY ORAHBD</p><h2 class="text-4xl font-black mt-2">Simple, useful, premium</h2><p class="text-slate-500 mt-4">A clean digital-first experience designed around useful products and easy access.</p></div>
-<div class="grid md:grid-cols-3 gap-5 mt-10">
-<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">⚡</span><h3 class="font-black text-xl mt-5">Instant access</h3><p class="text-slate-500 mt-2">Prepared for fast digital delivery after verified payment.</p></div>
-<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">✨</span><h3 class="font-black text-xl mt-5">Professional quality</h3><p class="text-slate-500 mt-2">Clean layouts and practical files built to look polished.</p></div>
-<div class="rounded-3xl border bg-white dark:bg-slate-900 p-7"><span class="text-4xl">🔐</span><h3 class="font-black text-xl mt-5">Secure-ready</h3><p class="text-slate-500 mt-2">Ready for real payment and secure download integration.</p></div>
-</div></section>
+<div class="chip-row" id="chip-row">
+  <button class="chip active" data-cat="all">সব প্রোডাক্ট</button>
+  <button class="chip" data-cat="electronics">ইলেকট্রনিক্স</button>
+  <button class="chip" data-cat="fashion">ফ্যাশন</button>
+  <button class="chip" data-cat="home">হোম ও লিভিং</button>
+  <button class="chip" data-cat="beauty">বিউটি</button>
+</div>
 
-<section class="max-w-7xl mx-auto px-5 pb-20"><div class="rounded-[2rem] bg-gradient-to-br from-indigo-600 to-cyan-500 text-white p-9 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
-<div><p class="font-black text-sm text-white/80">READY TO GET STARTED?</p><h2 class="text-3xl md:text-4xl font-black mt-2">Choose a resource and get to work.</h2><p class="text-white/80 mt-3">Add your real products, prices and previews when ready.</p></div>
-<a href="#products" class="rounded-2xl bg-white text-slate-950 px-6 py-3.5 font-bold">Browse Products</a></div></section>
+<div class="section-title" id="products">
+  <h2>বাছাই করা প্রোডাক্ট</h2>
+  <span id="count-label">৮টি প্রোডাক্ট</span>
+</div>
 
-<section id="faq" class="max-w-4xl mx-auto px-5 py-16"><h2 class="text-4xl font-black text-center">Frequently asked questions</h2>
-<div class="space-y-3 mt-8">
-<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">What does OrahBD sell?</summary><p class="text-slate-500 mt-3">Digital templates, guides, AI prompt packs, spreadsheets and website resources.</p></details>
-<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">How will customers receive files?</summary><p class="text-slate-500 mt-3">The final store can connect verified payment to secure digital download delivery.</p></details>
-<details class="border rounded-2xl p-5"><summary class="font-bold cursor-pointer">Can I add more products later?</summary><p class="text-slate-500 mt-3">Yes. The catalogue structure is designed to grow.</p></details>
-</div></section>
+<div class="grid" id="grid"></div>
 
-<footer class="bg-slate-950 text-white"><div class="max-w-7xl mx-auto px-5 py-14 grid md:grid-cols-3 gap-10">
-<div><b class="text-2xl">Orah<span class="text-cyan-400">BD</span></b><p class="text-slate-400 mt-4">Premium digital resources for careers, business, creativity and productivity.</p></div>
-<div><b>Store</b><div class="text-slate-400 mt-4 space-y-2 text-sm"><a class="block" href="#categories">Categories</a><a class="block" href="#products">Products</a><a class="block" href="#faq">FAQ</a></div></div>
-<div><b>Support</b><p class="text-slate-400 mt-4 text-sm">Replace this with your support email, refund policy and terms before launch.</p></div>
-</div><div class="border-t border-white/10 text-slate-500 text-sm max-w-7xl mx-auto px-5 py-5">© 2026 OrahBD. All rights reserved.</div></footer>
+<footer>
+  <div class="footer-wrap">
+    <div>© ২০২৬ ORAH.BD। সব দাম ও ছবি সংশ্লিষ্ট বিক্রেতার প্ল্যাটফর্ম থেকে।</div>
+    <div>এই সাইটের কিছু লিংকে অ্যাফিলিয়েট কমিশন যুক্ত থাকতে পারে।</div>
+  </div>
+</footer>
 
 <script>
-const categories=[['📄','CV & Resume'],['📝','Application Letter'],['📑','Cover Letter'],['📊','Excel Templates'],['📚','PDF Guides'],['🎨','Canva Templates'],['🤖','AI Prompt Packs'],['💼','Business Templates'],['📋','Invoice & Quotation'],['🌐','Website Templates']];
-const products=[
-['Modern ATS Resume','CV & Resume','Professional editable resume template','DOCX + PDF','$4.99','📄'],
-['Professional CV Bundle','CV & Resume','Clean CV collection for job seekers','DOCX + PDF','$7.99','📄'],
-['Job Application Pack','Application Letter','Bangla & English application samples','DOCX + PDF','$3.99','📝'],
-['Cover Letter Kit','Cover Letter','Ready-to-customize professional cover letters','DOCX + PDF','$4.99','📑'],
-['Monthly Budget Tracker','Excel Templates','Budget and expense tracker','XLSX','$3.99','📊'],
-['Business Accounting Sheet','Excel Templates','Income and expense workbook','XLSX','$6.99','📊'],
-['Freelancing Starter Guide','PDF Guides','Beginner guide to freelancing','PDF','$5.99','📚'],
-['ChatGPT Prompt Pack','AI Prompt Packs','Practical prompts for productivity and business','PDF / TXT','$4.99','🤖'],
-['Business Proposal Kit','Business Templates','Professional client proposal templates','DOCX + PDF','$6.99','💼'],
-['Invoice & Quotation Pack','Invoice & Quotation','Editable business documents','DOCX + XLSX','$4.99','📋'],
-['Social Media Starter Kit','Canva Templates','Editable social media design pack','Canva Link','$5.99','🎨'],
-['Portfolio Landing Page','Website Templates','Responsive HTML/CSS starter','ZIP','$9.99','🌐']];
-const cg=document.getElementById('categoriesGrid'),pg=document.getElementById('productGrid'),filter=document.getElementById('filter');
-cg.innerHTML=categories.map(c=>`<button onclick="choose('${c[1]}')" class="card text-left rounded-2xl border bg-white dark:bg-slate-900 p-5"><span class="text-3xl">${c[0]}</span><b class="block mt-4">${c[1]}</b><small class="text-slate-500">Explore →</small></button>`).join('');
-categories.forEach(c=>filter.add(new Option(c[1],c[1])));
-function render(){let q=document.getElementById('search').value.toLowerCase(),f=filter.value;let a=products.filter(p=>(f==='All'||p[1]===f)&&p.slice(0,3).join(' ').toLowerCase().includes(q));pg.innerHTML=a.map(p=>`<article class="card rounded-3xl overflow-hidden border bg-slate-50 dark:bg-slate-950"><div class="h-40 bg-gradient-to-br from-indigo-100 to-cyan-50 dark:from-indigo-950 dark:to-slate-900 flex items-center justify-center text-6xl">${p[5]}</div><div class="p-5"><small class="font-black text-indigo-600">${p[1]}</small><h3 class="font-black text-lg mt-2">${p[0]}</h3><p class="text-sm text-slate-500 mt-2 min-h-10">${p[2]}</p><div class="flex justify-between items-center mt-5"><b>${p[4]}</b><small class="text-slate-500">${p[3]}</small></div><button onclick="alert('Product detail page is ready for your real product data.')" class="w-full mt-4 rounded-xl bg-indigo-600 text-white py-3 font-bold">View Product</button></div></article>`).join('')}
-function choose(c){filter.value=c;document.getElementById('products').scrollIntoView({behavior:'smooth'});render()}
-document.getElementById('search').oninput=render;filter.onchange=render;document.getElementById('theme').onclick=()=>document.documentElement.classList.toggle('dark');render();
+/* ============================================================
+   প্রোডাক্ট তালিকা — এখানেই আপনার আসল প্রোডাক্ট বসাবেন।
+   প্রতিটা প্রোডাক্টের জন্য:
+   - name: প্রোডাক্টের নাম
+   - price: বর্তমান দাম (লেখা আকারে, যেমন "৳১,২৯০")
+   - oldPrice: (ঐচ্ছিক) আগের দাম, না থাকলে "" রাখুন
+   - cat: electronics / fashion / home / beauty
+   - image: প্রোডাক্টের ছবির লিংক (Daraz থেকে রাইট-ক্লিক করে "Copy image address")
+   - affiliateUrl: Involve Asia থেকে পাওয়া আপনার affiliate লিংক
+   ============================================================ */
+const products = [
+  {
+    name: "ওয়্যারলেস ব্লুটুথ ইয়ারবাডস",
+    price: "৳১,২৯০",
+    oldPrice: "৳১,৬৯০",
+    cat: "electronics",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-1"
+  },
+  {
+    name: "স্মার্ট ওয়াচ — হার্ট রেট মনিটর সহ",
+    price: "৳২,৪৯০",
+    oldPrice: "",
+    cat: "electronics",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-2"
+  },
+  {
+    name: "প্রিমিয়াম কটন পাঞ্জাবি",
+    price: "৳৯৫০",
+    oldPrice: "৳১,২০০",
+    cat: "fashion",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-3"
+  },
+  {
+    name: "লেডিস লেদার হ্যান্ডব্যাগ",
+    price: "৳১,১৫০",
+    oldPrice: "",
+    cat: "fashion",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-4"
+  },
+  {
+    name: "নন-স্টিক ফ্রাইপ্যান সেট",
+    price: "৳৭৮০",
+    oldPrice: "৳৯৫০",
+    cat: "home",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-5"
+  },
+  {
+    name: "LED টেবিল ল্যাম্প — টাচ কন্ট্রোল",
+    price: "৳৬৫০",
+    oldPrice: "",
+    cat: "home",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-6"
+  },
+  {
+    name: "ভিটামিন সি ফেসিয়াল সিরাম",
+    price: "৳৫৯০",
+    oldPrice: "",
+    cat: "beauty",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-7"
+  },
+  {
+    name: "সিরামিক হেয়ার স্ট্রেইটনার",
+    price: "৳১,৮৯০",
+    oldPrice: "৳২,৩০০",
+    cat: "beauty",
+    image: "",
+    affiliateUrl: "https://your-affiliate-link-here.com/product-8"
+  }
+];
+
+const categoryNames = {
+  electronics: "ইলেকট্রনিক্স",
+  fashion: "ফ্যাশন",
+  home: "হোম ও লিভিং",
+  beauty: "বিউটি"
+};
+
+const grid = document.getElementById('grid');
+const countLabel = document.getElementById('count-label');
+
+function renderProducts(filter){
+  grid.innerHTML = '';
+  const filtered = products.filter(p => filter === 'all' || p.cat === filter);
+  countLabel.textContent = filtered.length + 'টি প্রোডাক্ট';
+
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="${p.name}">`
+      : `প্রোডাক্টের ছবি`;
+
+    card.innerHTML = `
+      <div class="card-img">${imgHtml}</div>
+      <div class="card-body">
+        <div class="card-tag">${categoryNames[p.cat] || ''}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">${p.price}${p.oldPrice ? `<span class="old">${p.oldPrice}</span>` : ''}</div>
+        <a class="buy-btn" href="${p.affiliateUrl}" target="_blank" rel="noopener sponsored">
+          Daraz এ দেখুন ↗
+        </a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+renderProducts('all');
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    renderProducts(chip.dataset.cat);
+  });
+});
 </script>
-</body></html>
+
+</body>
+</html>
